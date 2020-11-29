@@ -7,7 +7,7 @@ Short script to separate comments in Apps4Pro Planner Manager Excel files create
 
 ![Comment Parser Example Use][use-example]
 
-Microsoft Planner is a useful tool used to track Tasks in various stages of completion. Microsft Planner's [web app](https://tasks.office.com) offers the feature to [export an entire plan](https://docs.microsoft.com/en-us/power-platform/admin/using-word-templates-dynamics-365) to better manipulate and analyzed Plan data. However, Microsoft's exported Excel file does not support the inclusion of comments made on Tasks.
+Microsoft Planner is a useful tool used to track Tasks in various stages of completion. Microsft Planner's [web app](https://tasks.office.com) offers the feature to [export an entire plan](https://docs.microsoft.com/en-us/power-platform/admin/using-word-templates-dynamics-365) to better manipulate and analyze Plan data. However, Microsoft's exported Excel file does not support the inclusion of comments made on Tasks.
 
 If tracking task comments is useful to you, [Apps4Pro](https://apps4.pro/Home.aspx) created software called the [Planner Manager](https://apps4.pro/planner-manager.aspx) which at the time of this script had a downloadable free trial version. The Planner Manager offers many added features to manipulate Microsoft Planner data, including the ability to extract comments from all Tasks in a given Plan.
 
