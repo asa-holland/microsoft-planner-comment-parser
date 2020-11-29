@@ -1,13 +1,5 @@
 # Microsoft Planner Comment Parser
-Script to separate out details on comments of exported Excel file from Microsoft Workflow
-
-
-# Dependencies
-pandas
-xlrd
-
-# Microsoft Planner Comment Parser
-Short script to separate comments on Excel files created from Apps4.Pro Planner Manager to export Microsoft Planner tasks.
+Short script to separate comments in Apps4Pro Planner Manager Excel files created from exporting Microsoft Planner tasks.
 
 
 <!-- ABOUT THE PROJECT -->
@@ -21,7 +13,11 @@ If tracking task comments is useful to you, [Apps4Pro](https://apps4.pro/Home.as
 
 However, the Planner Manager exports all comments for a given Task as a single cell in the exported `.xlsx` file:
 
+![Sample Comments Uncleaned][use-file-before]
+
 In an effort to make comments more easy to work with in Excel, this script parses the single cell comment for each task and separates it into four columns (Commenter, Comment Date, Comment Time, and Comment), and separates individual comments for any particular Task into unique rows (backfilling Task information as needed):
+
+![Sample Comments Cleaned][use-file-after]
 
 
 ### Built With
@@ -79,13 +75,12 @@ Locate the `.xlsx` file created by Apps4Pro Planner Manager that contains the ex
 
 Create a local string variable for the path to this saved `.xlsx` file.
 
-Then,add the following line to your script:
+Then, add the following line to your script:
 ```sh
 mpcp.commentParser.parse(excel_file='{your path to excel file here}')
 ```
 
 When run, this will create an additional `.xlsx` file in the same directory as your initial file, and will use the same filename but will append ` Cleaned Comments` to the filename.
-
 
 ## Usage Example with Sample File
 
@@ -151,6 +146,6 @@ Project Link: [https://github.com/asa-holland/microsoft-planner-comment-parser](
 <!-- MARKDOWN LINKS & IMAGES -->
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/asa-holland-a2a0b5b7/
-[use-file-after]: images/comments_cleaned.JPG
-[use-file-before]: images/comments_whole.JPG
+[use-file-after]: images/comments-cleaned.JPG
+[use-file-before]: images/comments-whole.JPG
 [use-example]: images/use.gif
