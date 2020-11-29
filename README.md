@@ -13,11 +13,11 @@ If tracking task comments is useful to you, [Apps4Pro](https://apps4.pro/Home.as
 
 However, the Planner Manager exports all comments for a given Task as a single cell in the exported `.xlsx` file:
 
-![Sample Comments Uncleaned][use-file-before]
+![Example Comments Uncleaned][use-file-before-exp]
 
 In an effort to make comments more easy to work with in Excel, this script parses the single cell comment for each task and separates it into four columns (Commenter, Comment Date, Comment Time, and Comment), and separates individual comments for any particular Task into unique rows (backfilling Task information as needed):
 
-![Sample Comments Cleaned][use-file-after]
+![Example Comments Cleaned][use-file-after-exp]
 
 
 ### Built With
@@ -148,4 +148,6 @@ Project Link: [https://github.com/asa-holland/microsoft-planner-comment-parser](
 [linkedin-url]: https://www.linkedin.com/in/asa-holland-a2a0b5b7/
 [use-file-after]: images/comments-cleaned.JPG
 [use-file-before]: images/comments-whole.JPG
+[use-file-before-exp]: images/comments-unsepd.JPG
+[use-file-after-exp]: images/comments-sepd.JPG
 [use-example]: images/use.gif
