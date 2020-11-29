@@ -65,7 +65,7 @@ pip install -r requirements.txt
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-To use the Microsoft Planner Comment Parser once installed, add following line item to your project:
+To use the Microsoft Planner Comment Parser once installed, add the following line item to your project:
 
 ```sh
 import microsoft-planner-comment-parser as mpcp
