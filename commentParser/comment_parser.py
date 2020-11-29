@@ -3,58 +3,47 @@
 # import pandas to handle the excel file
 import pandas as pd
 
-# import regex to handle the searching
-import re
-
-# While this could be done natively in pandas we bypass this to avoid having to deal with Series/dataframe transformation
+# import numpy to handle the missing values
+import numpy as np
 
 def parse(excel_file):
+	"""
+	Separates comments in an Apps4Pro Planner Manager Microsoft Planner exported excel file
+	:param excel_file: takes a string of a path to an excel file exported from Microsoft Planner (using Apps4Pro Planner Manager) with comments that should be separated
+	:return: string of a path to the newly created cleaned excel file
+	"""
 
 	# Read the excel file into pandas
 	raw_df = pd.read_excel(io=excel_file)
 
-	# Convert all NANs to None so that python (not pandas) can handle the missing values
-	df = raw_df.where(pd.notnull(raw_df), None)
+	# Split comments based on their #### dividers, then explode out the rows so that each row entry is backfilled based on the task details
+	new_df = (raw_df.set_index(['Plan Name', 'Task Title', 'Bucket', 'Assigned to', 'Start date', 'Due date', 
+		'Completed by', 'Completed date']).apply(lambda x: x.str.split('###############').explode()).reset_index())
 
-	# Convert the list of excel cells in the comments column to a standard python list
-	comments_column_as_list = df['Comments'].tolist()
+	# Add a new column for the commenter
+	new_df['Commenter'] = new_df['Comments'].str.extract('Posted by: ([A-Za-z -]+) - ')
 
-	
+	# Add a new column for the comment date
+	new_df['Comment Date'] = new_df['Comments'].str.extract('- ([0-9\/]*) [0-9: AP]*M')
 
-	# Define the pattern we need to extract the comment information
-	comment_pattern = r'Posted by: ([A-Za-z -]+) - ([0-9\/]*) ([0-9: AP]*M) -\d\d:\d\d\n\n([\w\d\s\/,\(\)-]*)(?=These comments are about the task|Reply)'
+	# add a new column for comment time
+	new_df['Comment Time'] = new_df['Comments'].str.extract('- [0-9\/]* ([0-9: AP]*M)')
 
-	# Separated comments
-	separated_comments = []
+	# add a new column for the comment itself
+	new_df['Comment'] = new_df['Comments'].str.extract('-\d\d:\d\d\n\n([\w\d\s\/,\(\)-]*)(?=These comments are about the task|Reply)')
 
-	# Iterate over the data
-	for cell in comments_column_as_list:
+	# Clean up the comment, removing any whitespace and newlines
+	new_df["Comment"] = new_df["Comment"].str.strip()
 
-		# For each individual cell, check if the content is empty. If so, we can skip over any parsing for this cell
-		if cell is None:
-			separated_comments += []
+	# remove the original comments column
+	new_df.drop('Comments', axis='columns', inplace=True)
 
-		# Otherwise, parse as usual
-		else:
+	# create a new filename (in the same folder as the original file)
+	new_excel_file = str(excel_file).replace('.xlsx', ' Cleaned Comments.xlsx')
 
-			# Within each cell, a new dictionary using the values we want to parse out
-			new_columns = {
-				'commenter': [],
-				'date': [],
-				'time': [],
-				'comment': [],
-			}
-			
-			# perform a search using our regex code to return a list of tuples, each tuple containing a set of matched information in the form:
-			# (Commenter Name, Comment Date, Comment Time, Comment)
-			cell_results = re.findall(pattern=comment_pattern, string=cell)
+	# save the cleaned file to the original directory with a cleaned name
+	new_df.to_excel(excel_writer=new_excel_file)
 
-			print(cell_results)
-
-			# append the separated comments to the list
-			separated_comments += [cell_results]
-
-
-	print(separated_comments)
-
-	pass
+	# output to the user that the parsing has been completed, and return the path of the newly created file as a string
+	print('Workflow export comments have successfully been separated into individual rows.')
+	return new_excel_file 
