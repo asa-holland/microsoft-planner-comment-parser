@@ -45,5 +45,5 @@ def parse(excel_file):
 	new_df.to_excel(excel_writer=new_excel_file)
 
 	# output to the user that the parsing has been completed, and return the path of the newly created file as a string
-	print('Workflow export comments have successfully been separated into individual rows.')
+	print('Comments for exported Microsoft Planner worksheet have been successfully separated into individual rows.')
 	return new_excel_file 
