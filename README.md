@@ -53,7 +53,7 @@ This project manipulates Microsoft Excel `.xlsx` files, but a local installation
 
 2. Enter the following command to use Git to clone this repository to your local machine.
 ```sh
-git clone https://github.com/asa-holland/microsoft-planner-comment-parser.git
+git clone https://github.com/asa-leholland/microsoft-planner-comment-parser.git
 ```
 3. Enter the following command to use Pip to install this repository's dependencies.
 ```sh
@@ -100,7 +100,7 @@ This will create another `.xlsx` file in the same directory where comments have 
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/asa-holland/microsoft-planner-comment-parser/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/asa-leholland/microsoft-planner-comment-parser/issues) for a list of proposed features (and known issues).
 
 
 
@@ -127,9 +127,9 @@ Distributed under the MIT License. See [LICENSE](https://github.com/asa-holland/
 <!-- CONTACT -->
 ## Contact
 
-Asa Holland - [@AsaHolland404](https://twitter.com/AsaHolland404) - hollandasa@gmail.com
+Asa LeHolland - asaleholland@gmail.com
 
-Project Link: [https://github.com/asa-holland/microsoft-planner-comment-parser](https://github.com/asa-holland/microsoft-planner-comment-parser)
+Project Link: [https://github.com/asa-leholland/microsoft-planner-comment-parser](https://github.com/asa-leholland/microsoft-planner-comment-parser)
 
 
 
